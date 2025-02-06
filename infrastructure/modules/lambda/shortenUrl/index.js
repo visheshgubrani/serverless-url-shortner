@@ -44,7 +44,7 @@ export const handler = async (event, context) => {
       },
     })
     await docClient.send(command)
-    const baseUrl = process.env.BASE_URL || 'shrtnn.xyz/src'
+    const baseUrl = process.env.BASE_URL || 'https://shrtnn.xyz/r'
     const shortUrl = `${baseUrl}/${shortId}`
 
     return {

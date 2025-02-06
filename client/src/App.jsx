@@ -68,7 +68,7 @@ function App() {
             <div className='result-container'>
               <h2>Your shortened URL:</h2>
               <div className='url-display'>
-                <a href='{shortUrl}' target='_blank' rel='noopener noreferrer'>
+                <a href={shortUrl} target='_blank' rel='noopener noreferrer'>
                   {shortUrl}
                 </a>
                 <button
