@@ -3,9 +3,9 @@ import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb'
 import { v4 as uuid } from 'uuid'
 
 const client = new DynamoDBClient({})
-const doClient = DynamoDBDocumentClient.from(client)
+const docClient = DynamoDBDocumentClient.from(client)
 
-const handler = async (event, context) => {
+export const handler = async (event, context) => {
   try {
     // get the content from the request body, event
     const body = JSON.parse(event.body)
@@ -43,8 +43,8 @@ const handler = async (event, context) => {
         clickHistory: [],
       },
     })
-    await doClient.send(command)
-    const baseUrl = process.env.BASE_URL || 'api_gw_url'
+    await docClient.send(command)
+    const baseUrl = process.env.BASE_URL || 'shrtnn.xyz/src'
     const shortUrl = `${baseUrl}/${shortId}`
 
     return {
