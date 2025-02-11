@@ -5,8 +5,6 @@ data "archive_file" "lambda" {
 }
 
 resource "aws_lambda_function" "lambda" {
-  # If the file is not in the current working directory you will need to include a
-  # path.module in the filename.
   filename      = data.archive_file.lambda.output_path
   function_name = var.function_name
   role          = var.lambda_iam_role

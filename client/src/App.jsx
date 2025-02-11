@@ -21,7 +21,6 @@ function App() {
   const mutation = useMutation({
     mutationFn: shortenUrl,
     onSuccess: (data) => {
-      console.log('Success:', data)
       setShortUrl(data.shortUrl)
     },
     onError: (error) => {

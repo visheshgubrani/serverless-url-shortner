@@ -14,7 +14,10 @@ export const handler = async (event, context) => {
       console.log('Url is Missing')
       return {
         statusCode: 400,
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
+        },
         body: JSON.stringify({ message: 'Url is Missing' }),
       }
     }
@@ -25,7 +28,10 @@ export const handler = async (event, context) => {
       console.log('Invalid URL format')
       return {
         statusCode: 400,
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
+        },
         body: JSON.stringify({ message: 'Invalid URL format' }),
       }
     }
@@ -51,7 +57,7 @@ export const handler = async (event, context) => {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
       },
       body: JSON.stringify({
         shortUrl,
@@ -66,7 +72,7 @@ export const handler = async (event, context) => {
       statusCode: 500,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
       },
       body: JSON.stringify({ message: 'Internal server error' }),
     }

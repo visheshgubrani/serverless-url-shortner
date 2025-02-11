@@ -17,7 +17,7 @@ export const handler = async (event, context) => {
         statusCode: 400,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
         },
         body: JSON.stringify({ message: 'Missing URL' }),
       }
@@ -56,10 +56,7 @@ export const handler = async (event, context) => {
       },
       ReturnValues: 'ALL_NEW',
     })
-
-    console.log('Sending DynamoDB command...')
     const updateResponse = await docClient.send(updateCommand)
-    console.log('DynamoDB response:', JSON.stringify(updateResponse, null, 2))
 
     const item = updateResponse.Attributes
 
@@ -69,18 +66,16 @@ export const handler = async (event, context) => {
         statusCode: 404,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
         },
         body: JSON.stringify({ message: 'URL not found' }),
       }
     }
-
-    console.log('Redirecting to:', item.originalUrl)
     return {
       statusCode: 301,
       headers: {
         Location: item.originalUrl,
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
       },
     }
   } catch (error) {
@@ -89,7 +84,7 @@ export const handler = async (event, context) => {
       statusCode: 500,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
       },
       body: JSON.stringify({ message: 'Internal Server Error' }),
     }
