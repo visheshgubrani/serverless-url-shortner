@@ -17,7 +17,7 @@ export const handler = async (event, context) => {
         statusCode: 400,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
+          'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify({ message: 'Missing URL' }),
       }
@@ -66,7 +66,7 @@ export const handler = async (event, context) => {
         statusCode: 404,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
+          'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify({ message: 'URL not found' }),
       }
@@ -75,7 +75,7 @@ export const handler = async (event, context) => {
       statusCode: 301,
       headers: {
         Location: item.originalUrl,
-        'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
+        'Access-Control-Allow-Origin': '*',
       },
     }
   } catch (error) {
@@ -84,7 +84,7 @@ export const handler = async (event, context) => {
       statusCode: 500,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://shrtnn.xyz',
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({ message: 'Internal Server Error' }),
     }
